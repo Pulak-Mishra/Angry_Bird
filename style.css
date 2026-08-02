@@ -1,0 +1,5 @@
+body{margin:0;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;height:100vh;background:linear-gradient(135deg,#bde0fe,#ffc8dd);overflow:hidden}
+.card{background:rgba(255,255,255,.5);backdrop-filter:blur(8px);padding:30px;border-radius:20px;max-width:650px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+button{padding:12px 24px;border:none;border-radius:25px;background:#ff4d88;color:#fff;cursor:pointer}
+#popup{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;justify-content:center;align-items:center}
+.hide{display:none}.pop{background:#fff;padding:25px;border-radius:16px;max-width:420px}

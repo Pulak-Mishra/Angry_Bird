@@ -1,0 +1,28 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Happy Friendship Day</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;min-height:100vh;background:linear-gradient(135deg,#b8e8ff,#d9c8ff,#ffe4f0);overflow:hidden}
+.card{position:relative;z-index:2;background:rgba(255,255,255,.45);backdrop-filter:blur(8px);padding:30px;border-radius:20px;max-width:700px;text-align:center}
+.heart{position:fixed;bottom:-30px;animation:float linear infinite}
+@keyframes float{from{transform:translateY(0)}to{transform:translateY(-120vh)}}
+button{padding:12px 24px;border-radius:25px;border:none;background:#0057b7;color:#fff;cursor:pointer}
+#popup{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);align-items:center;justify-content:center}
+#box{background:#fff;padding:20px;border-radius:15px;max-width:350px}
+canvas{position:fixed;inset:0;pointer-events:none}
+</style></head><body>
+<canvas id=c></canvas>
+<div class=card><h1>💙 Happy Friendship Day 💙</h1><h2>Dear Angry Bird 🐦</h2><p id=msg></p><button onclick="show()">🎁 Click for Surprise</button><p><b>— Enemy 💙</b></p></div>
+<div id=popup><div id=box><h3>Secret Message</h3><p>Even if we grow older, I'll never stop calling you Angry Bird. ❤️<br>Happy Friendship Day!</p><button onclick="hide()">Close</button></div></div>
+<script>
+const t=`Some friendships begin with random conversations, some with funny moments, and some with endless teasing.
+
+Thank you for always being there. Happy Friendship Day! 💙`;
+let i=0;function type(){if(i<t.length){msg.textContent+=t[i++];setTimeout(type,35)}}type();
+for(let j=0;j<40;j++){let h=document.createElement('div');h.className='heart';h.textContent=Math.random()>.5?'💙':'💖';h.style.left=Math.random()*100+'vw';h.style.fontSize=(16+Math.random()*20)+'px';h.style.animationDuration=(6+Math.random()*8)+'s';h.style.animationDelay=(-Math.random()*10)+'s';document.body.appendChild(h);}
+popup.style.display='none';
+function show(){popup.style.display='flex';confetti()}
+function hide(){popup.style.display='none'}
+const cv=document.getElementById('c'),ctx=cv.getContext('2d');function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();onresize=rs;
+let pcs=[];
+function confetti(){pcs=[];for(let i=0;i<180;i++)pcs.push({x:Math.random()*cv.width,y:-Math.random()*cv.height,v:2+Math.random()*4,r:2+Math.random()*4,c:`hsl(${Math.random()*360},100%,60%)`});requestAnimationFrame(draw)}
+function draw(){ctx.clearRect(0,0,cv.width,cv.height);let alive=false;for(const p of pcs){p.y+=p.v;if(p.y<cv.height+20)alive=true;ctx.fillStyle=p.c;ctx.fillRect(p.x,p.y,p.r*2,p.r*2)}if(alive)requestAnimationFrame(draw)}
+</script></body></html>
